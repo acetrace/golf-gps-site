@@ -1,0 +1,23 @@
+- id: john-doe
+  name: John Doe
+  rating: 5
+  text: "AceTRACE has completely transformed my golf game! The accurate distance measurements and course insights have helped me improve my strategy and lower my handicap by 3 strokes in just two months."
+  imagePrompt: "Professional male golfer in his 40s with short brown hair and athletic build, wearing a blue polo shirt, smiling on a sunny golf course, photorealistic portrait"
+
+- id: sarah-johnson
+  name: Sarah Johnson
+  rating: 5
+  text: "As a beginner golfer, AceTRACE has been invaluable. The intuitive interface makes it easy to navigate courses I've never played before, and the distance tracking feature has helped me choose the right club every time."
+  imagePrompt: "Female golfer in her 30s with blonde hair in a ponytail, wearing a white visor and pink golf shirt, smiling confidently on a golf course, photorealistic portrait"
+
+- id: michael-chen
+  name: Michael Chen
+  rating: 4
+  text: "AceTRACE is my go-to golf app. The course maps are incredibly detailed, and the shot tracking helps me analyze my game better than any other app I've tried. The battery usage is minimal too, which is a huge plus!"
+  imagePrompt: "Asian man in his mid-30s with glasses and short black hair, wearing a green golf shirt, looking professional on a golf course, photorealistic portrait"
+
+- id: emma-rodriguez
+  name: Emma Rodriguez
+  rating: 5
+  text: "I've tried several golf GPS apps, but AceTRACE stands out for its accuracy and reliability. The premium features are worth every penny - especially the advanced statistics that help me focus my practice sessions."
+  imagePrompt: "Latina woman in her late 20s with long dark hair, athletic build, wearing a yellow golf shirt and white cap, smiling on a golf course, photorealistic portrait"
