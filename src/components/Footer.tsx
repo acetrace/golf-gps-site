@@ -1,5 +1,6 @@
 
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
           <div className="space-y-4 md:col-span-2 lg:col-span-1">
             <div className="flex items-center">
               <span className="text-2xl font-bold">
-                Ace<span className="text-primary">Trace</span>
+                Golf GPS - <span className="text-primary">Ace Trace</span>
               </span>
             </div>
             <p className="text-muted-foreground">
@@ -19,32 +20,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 pt-2">
               <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/acetracegolf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube size={20} />
               </a>
             </div>
           </div>
@@ -62,28 +44,20 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/pricing"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/roadmap"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Roadmap
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -93,46 +67,48 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/careers"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/privacy-policy"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/terms-of-service"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Download */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Coming Soon</h3>
+            <h3 className="font-semibold text-lg mb-4">Download</h3>
             <div className="space-y-3">
               <a
-                href="#"
+                href="https://apps.apple.com/us/app/golf-gps-ace-trace"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center px-4 py-3 border border-border rounded-lg hover:bg-secondary transition-colors"
               >
                 <span className="block text-xs text-muted-foreground">
@@ -141,7 +117,9 @@ const Footer = () => {
                 <span className="block font-semibold">App Store</span>
               </a>
               <a
-                href="#"
+                href="https://play.google.com/store/apps/details?id=com.acetrace.golfgps"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center px-4 py-3 border border-border rounded-lg hover:bg-secondary transition-colors"
               >
                 <span className="block text-xs text-muted-foreground">
@@ -154,7 +132,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Ace Trace. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Golf GPS - Ace Trace. All rights reserved.</p>
         </div>
       </div>
     </footer>

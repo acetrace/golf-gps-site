@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 import AnimatedButton from './ui-custom/AnimatedButton';
 
 const NavBar = () => {
@@ -27,11 +28,11 @@ const NavBar = () => {
       )}
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <span className="text-2xl font-bold text-foreground">
-            Ace<span className="text-primary">Trace</span>
+            Golf GPS - <span className="text-primary">Ace Trace</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -47,17 +48,34 @@ const NavBar = () => {
           >
             Demo
           </a>
-          <a
-            href="#faq"
+          <Link
+            to="/pricing"
             className="text-foreground/80 hover:text-primary transition-colors"
           >
-            FAQ
+            Pricing
+          </Link>
+          <Link
+            to="/roadmap"
+            className="text-foreground/80 hover:text-primary transition-colors"
+          >
+            Roadmap
+          </Link>
+          <Link
+            to="/about"
+            className="text-foreground/80 hover:text-primary transition-colors"
+          >
+            About Us
+          </Link>
+          <a 
+            href="https://www.instagram.com/acetracegolf" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/80 hover:text-primary transition-colors"
+          >
+            <Instagram size={20} />
           </a>
-          <AnimatedButton size="sm" variant="outline">
-            Sign In
-          </AnimatedButton>
           <AnimatedButton size="sm" withArrow>
-            Get Early Access
+            Download Now
           </AnimatedButton>
         </nav>
 
@@ -89,19 +107,42 @@ const NavBar = () => {
             >
               Demo
             </a>
-            <a
-              href="#faq"
+            <Link
+              to="/pricing"
               className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              FAQ
+              Pricing
+            </Link>
+            <Link
+              to="/roadmap"
+              className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Roadmap
+            </Link>
+            <Link
+              to="/about"
+              className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About Us
+            </Link>
+            <a 
+              href="https://www.instagram.com/acetracegolf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <div className="flex items-center gap-2">
+                <Instagram size={20} />
+                <span>Instagram</span>
+              </div>
             </a>
-            <div className="flex flex-col space-y-3 pt-4">
-              <AnimatedButton size="sm" variant="outline" className="w-full">
-                Sign In
-              </AnimatedButton>
+            <div className="pt-4">
               <AnimatedButton size="sm" withArrow className="w-full">
-                Get Early Access
+                Download Now
               </AnimatedButton>
             </div>
           </nav>

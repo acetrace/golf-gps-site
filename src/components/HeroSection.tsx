@@ -60,7 +60,7 @@ const HeroSection = () => {
             ref={textRef}
             className="reveal lg:w-1/2 text-center lg:text-left space-y-6"
           >
-            <Badge className="mb-4">Coming Soon to iOS & Android</Badge>
+            <Badge className="mb-4">Rangefinder, GPS & Scorecards</Badge>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance">
               Plan Your Perfect Golf Shot with Precision Distance Mapping
@@ -70,11 +70,16 @@ const HeroSection = () => {
               Visualize distances to the hole and optimize your approach for lower scores. Make data-driven decisions that improve your game.
             </p>
             
+            <p className="text-sm text-muted-foreground">
+              From the makers of <span className="font-medium">Ace Trace</span>, the leading golf shot trajectory app. 
+              Golf GPS - Ace Trace is our dedicated solution for rangefinding and course management.
+            </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start pt-4">
               <AnimatedButton size="lg" withArrow>
-                Get Early Access
+                Download Now
               </AnimatedButton>
-              <AnimatedButton size="lg" variant="outline">
+              <AnimatedButton size="lg" variant="outline" href="#features">
                 Learn More
               </AnimatedButton>
             </div>
@@ -87,7 +92,7 @@ const HeroSection = () => {
           >
             <PhoneMockup
               imageSrc="/placeholder.svg"
-              alt="Ace Trace app showing golf course map with distance visualization"
+              alt="Golf GPS - Ace Trace app showing golf course map with distance visualization"
               className="animate-float"
             />
           </div>

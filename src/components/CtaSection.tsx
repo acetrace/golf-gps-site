@@ -46,19 +46,19 @@ const CtaSection = () => {
             </h2>
             
             <p className="text-xl text-muted-foreground">
-              Join our early access program and be among the first to experience
-              the future of golf course navigation and shot planning.
+              Download Golf GPS - Ace Trace today and experience the best in golf course 
+              navigation and shot planning.
             </p>
             
             <div className="py-8">
               <AnimatedButton size="lg" withArrow>
-                Get Early Access
+                Download Now
               </AnimatedButton>
             </div>
             
             <p className="text-sm text-muted-foreground">
-              <span className="font-medium">Limited spots available.</span> Be part of shaping
-              the future of golf technology and receive exclusive benefits.
+              Available on iOS and Android. <span className="font-medium">Join thousands of golfers</span> who are 
+              already improving their game with precision GPS technology.
             </p>
           </div>
         </div>
