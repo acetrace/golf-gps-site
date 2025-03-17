@@ -3,136 +3,69 @@ import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="py-16 bg-primary/5">
+    <footer className="bg-secondary/20 pt-16 pb-8">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Logo and description */}
-          <div className="space-y-4 md:col-span-2 lg:col-span-1">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold">
-                Golf GPS - <span className="text-primary">Ace Trace</span>
-              </span>
-            </div>
-            <p className="text-muted-foreground">
-              Precision GPS technology for golfers, designed to help you make
-              smarter decisions on the course and improve your game.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          {/* Column 1 - App Information */}
+          <div className="space-y-4">
+            <Link to="/" className="inline-block">
+              <h3 className="text-xl font-bold">Golf GPS - <span className="text-primary">Ace Trace</span></h3>
+            </Link>
+            <p className="text-muted-foreground text-sm max-w-xs">
+              Precision distance tracking and course management for golfers of all levels. From the makers of the popular Ace Trace shot tracking application.
             </p>
-            <div className="flex space-x-4 pt-2">
+            <div className="pt-2">
               <a
                 href="https://www.instagram.com/acetracegolf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                <Instagram size={20} />
+                <Instagram size={16} />
+                <span>@acetracegolf</span>
               </a>
             </div>
           </div>
 
-          {/* Quick links */}
+          {/* Column 2 - App Features */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Product</h3>
-            <ul className="space-y-3">
+            <h4 className="font-medium mb-4">Features</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <a
-                  href="#features"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Features
-                </a>
+                <a href="#features" className="hover:text-primary transition-colors">GPS Rangefinder</a>
               </li>
               <li>
-                <Link
-                  to="/pricing"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Pricing
-                </Link>
+                <a href="#features" className="hover:text-primary transition-colors">Course Management</a>
               </li>
               <li>
-                <Link
-                  to="/roadmap"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Roadmap
-                </Link>
+                <a href="#features" className="hover:text-primary transition-colors">Shot Planning</a>
+              </li>
+              <li>
+                <a href="#features" className="hover:text-primary transition-colors">Score Tracking</a>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Column 3 - Legal */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Company</h3>
-            <ul className="space-y-3">
+            <h4 className="font-medium mb-4">Legal</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <Link
-                  to="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  About Us
-                </Link>
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
               </li>
               <li>
-                <Link
-                  to="/careers"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/terms-of-service"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Terms of Service
-                </Link>
+                <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
               </li>
             </ul>
-          </div>
-
-          {/* Download */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Download</h3>
-            <div className="space-y-3">
-              <a
-                href="https://apps.apple.com/us/app/golf-gps-ace-trace"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-center px-4 py-3 border border-border rounded-lg hover:bg-secondary transition-colors"
-              >
-                <span className="block text-xs text-muted-foreground">
-                  Download on the
-                </span>
-                <span className="block font-semibold">App Store</span>
-              </a>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.acetrace.golfgps"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-center px-4 py-3 border border-border rounded-lg hover:bg-secondary transition-colors"
-              >
-                <span className="block text-xs text-muted-foreground">
-                  Get it on
-                </span>
-                <span className="block font-semibold">Google Play</span>
-              </a>
-            </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Golf GPS - Ace Trace. All rights reserved.</p>
+        {/* Footer Bottom */}
+        <div className="pt-8 border-t border-border/40 text-center text-xs text-muted-foreground">
+          <p>© {currentYear} Golf GPS - Ace Trace. All rights reserved.</p>
         </div>
       </div>
     </footer>

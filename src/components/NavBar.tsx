@@ -42,29 +42,17 @@ const NavBar = () => {
           >
             Features
           </a>
-          <a
-            href="#demo"
-            className="text-foreground/80 hover:text-primary transition-colors"
-          >
-            Demo
-          </a>
           <Link
-            to="/pricing"
+            to="/privacy-policy"
             className="text-foreground/80 hover:text-primary transition-colors"
           >
-            Pricing
+            Privacy Policy
           </Link>
           <Link
-            to="/roadmap"
+            to="/terms-of-service"
             className="text-foreground/80 hover:text-primary transition-colors"
           >
-            Roadmap
-          </Link>
-          <Link
-            to="/about"
-            className="text-foreground/80 hover:text-primary transition-colors"
-          >
-            About Us
+            Terms of Service
           </Link>
           <a 
             href="https://www.instagram.com/acetracegolf" 
@@ -100,33 +88,19 @@ const NavBar = () => {
             >
               Features
             </a>
-            <a
-              href="#demo"
-              className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Demo
-            </a>
             <Link
-              to="/pricing"
+              to="/privacy-policy"
               className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Pricing
+              Privacy Policy
             </Link>
             <Link
-              to="/roadmap"
+              to="/terms-of-service"
               className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Roadmap
-            </Link>
-            <Link
-              to="/about"
-              className="px-4 py-2 text-foreground/80 hover:text-primary transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About Us
+              Terms of Service
             </Link>
             <a 
               href="https://www.instagram.com/acetracegolf" 
