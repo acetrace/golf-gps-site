@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+<Layout title="Off the fairway · Golf GPS" description="Page not found.">
+  <NavBar />
+  <main class="pt-36 pb-24 min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="h-px w-10 bg-gold/60"></span>
+      <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">Lost ball · 404</span>
+      <span class="h-px w-10 bg-gold/60"></span>
+    </div>
+    <h1 class="font-display text-7xl md:text-8xl lg:text-[10rem] uppercase leading-[0.9] text-ink mb-6 text-balance">
+      Off the<br/><span class="text-gold">fairway</span>
+    </h1>
+    <p class="font-sans text-lg md:text-xl text-ink-muted max-w-md mb-12 leading-relaxed">
+      That page seems to be in the rough. Walk it back to the tee and try a different line.
+    </p>
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-widest text-dusk transition-all duration-300 hover:bg-gold-strong hover:shadow-gold-glow"
+    >
+      ← Back to the clubhouse
+    </a>
+  </main>
+  <SiteFooter />
+</Layout>

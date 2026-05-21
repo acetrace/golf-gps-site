@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Hero from '../components/Hero.astro';
+import Spotlight from '../components/Spotlight.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import YardageLine from '../components/YardageLine.astro';
+
+import rangefinder from '../assets/screenshots/rangefinder.png';
+import scorecard from '../assets/screenshots/scorecard.png';
+import shotTracker from '../assets/screenshots/shot-tracker.png';
+import coursesNearby from '../assets/screenshots/courses-nearby.png';
+import statsHistory from '../assets/screenshots/stats-history.png';
+---
+<Layout>
+  <NavBar />
+  <YardageLine />
+  <main>
+    <Hero />
+
+    <Spotlight
+      id="scorecard"
+      kicker="§01"
+      title="Live Scorecard"
+      body="Track every stroke, hole by hole. Tap a hole, log the score, keep playing. Fairways, greens, and putts roll up automatically."
+      screenshot={scorecard}
+      screenshotAlt="Live scorecard with 18-hole grid, par tracking, and putt stats"
+      side="left"
+      stats={[
+        { value: 18, label: 'Holes Tracked' },
+        { value: 25, label: 'Putts Per Round' },
+      ]}
+    />
+
+    <Spotlight
+      id="shot-tracker"
+      kicker="§02"
+      title="Shot by Shot"
+      body="Log every stroke from tee to cup. See the shape of your round in trajectories you can study after the back nine."
+      screenshot={shotTracker}
+      screenshotAlt="Shot trajectory overlay on aerial view of a par 4 fairway"
+      side="right"
+      stats={[
+        { value: 262, label: 'YD Drive' },
+        { value: 8, label: 'Launch Angle', suffix: '°' },
+      ]}
+    />
+
+    <Spotlight
+      id="courses"
+      kicker="§03"
+      title="30,000+ Courses"
+      body="From muni to championship — find a course near you, anywhere in the country. Mapped to the foot."
+      screenshot={coursesNearby}
+      screenshotAlt="Map of courses near the player with pin markers and distance"
+      side="left"
+      stats={[
+        { value: 30000, label: 'Courses Mapped', suffix: '+', format: 'comma' },
+      ]}
+    />
+
+    <Spotlight
+      id="stats"
+      kicker="§04"
+      title="Your Golf Journey"
+      body="Handicap, history, and the curves that tell you how the season's going. Every round adds up."
+      screenshot={statsHistory}
+      screenshotAlt="Stats dashboard with handicap, rounds played, and a chart of recent scores"
+      side="right"
+      stats={[
+        { value: 12.4, label: 'Handicap', decimals: 1 },
+        { value: 47, label: 'Rounds Played' },
+      ]}
+    />
+
+    <Spotlight
+      id="rangefinder"
+      kicker="§05"
+      title="Engineered for the Fairway"
+      body="Front, middle, back. Pin distance with sub-yard accuracy from your phone's GPS — no laser, no batteries, no excuses."
+      screenshot={rangefinder}
+      screenshotAlt="Rangefinder showing 156 yards to pin with front, middle, back distances"
+      side="left"
+      stats={[
+        { value: 156, label: 'YDS to Pin' },
+        { value: 1, label: 'YD Accuracy', prefix: '±' },
+      ]}
+    />
+
+    <Testimonials />
+    <CTA />
+  </main>
+  <SiteFooter />
+</Layout>

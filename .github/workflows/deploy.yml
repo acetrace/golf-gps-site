@@ -41,7 +41,7 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           # Automatically detect the static site generator used
-          static_site_generator: custom
+          static_site_generator: astro
       
       - name: Create CNAME file
         run: echo 'golfgps.ai' > dist/CNAME

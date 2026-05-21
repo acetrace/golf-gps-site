@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import StoreBadges from './StoreBadges.astro';
+import landscape from '../assets/golf-course-landscape.png';
+---
+<section class="relative py-32 lg:py-44 overflow-hidden">
+  <div class="absolute inset-0 -z-10">
+    <Image
+      src={landscape}
+      alt=""
+      widths={[768, 1280, 1920]}
+      sizes="100vw"
+      loading="lazy"
+      format="webp"
+      quality={70}
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-dusk/85"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-dusk via-transparent to-dusk"></div>
+  </div>
+
+  <div class="container max-w-5xl mx-auto px-6 text-center relative">
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <span class="h-px w-10 bg-gold/60"></span>
+      <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">Tee it up</span>
+      <span class="h-px w-10 bg-gold/60"></span>
+    </div>
+
+    <h2 class="font-display text-6xl md:text-7xl lg:text-[9rem] uppercase leading-[0.9] text-ink text-balance mb-8">
+      Ready to<br/><span class="text-gold text-shadow-gold">play smarter?</span>
+    </h2>
+
+    <p class="font-sans text-lg md:text-xl text-ink-muted max-w-xl mx-auto leading-relaxed mb-12">
+      Free on iOS and Android. Join thousands of golfers already lowering their handicap with precision GPS.
+    </p>
+
+    <div class="mb-8">
+      <StoreBadges size="lg" align="center" />
+    </div>
+
+    <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-ink-dim">
+      No subscription · No ads · No data sold
+    </p>
+  </div>
+</section>

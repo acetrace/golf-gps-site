@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Astro
+.astro
+
+# Claude Code local state
+.claude
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
