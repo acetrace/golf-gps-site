@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import StoreBadges from './StoreBadges.astro';
+import StatCounter from './StatCounter.astro';
+import rangefinder from '../assets/screenshots/rangefinder.png';
+---
+<section class="relative pt-36 pb-24 lg:pt-44 lg:pb-32 min-h-[92vh] overflow-hidden">
+  <div
+    class="absolute inset-0 bg-gradient-radial-gold pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute top-1/2 left-0 -translate-y-1/2 w-px h-72 bg-gradient-to-b from-transparent via-gold/40 to-transparent hidden lg:block"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container max-w-7xl mx-auto px-6 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-7 space-y-8">
+        <div class="flex items-center gap-3 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="h-px w-10 bg-gold/60"></span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">
+            Rangefinder · Scorecards · Shot Tracker
+          </span>
+        </div>
+
+        <h1
+          class="font-display text-6xl sm:text-7xl lg:text-[8rem] xl:text-[9rem] uppercase leading-[0.88] text-balance text-ink opacity-0 animate-fade-in-up"
+          style="animation-delay: 100ms;"
+        >
+          Golf GPS<br />
+          <span class="text-gold text-shadow-gold">Rangefinder</span>
+        </h1>
+
+        <p
+          class="font-sans text-lg md:text-xl text-ink-muted max-w-lg leading-relaxed opacity-0 animate-fade-in-up"
+          style="animation-delay: 200ms;"
+        >
+          Real distance to any pin. Visualise the course, plan the shot, lower the score.
+          Built for golfers who think in yards.
+        </p>
+
+        <div class="opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          <StoreBadges size="lg" />
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row gap-6 sm:gap-8 pt-4 opacity-0 animate-fade-in-up"
+          style="animation-delay: 400ms;"
+        >
+          <StatCounter value={30000} label="Courses Mapped" suffix="+" format="comma" />
+          <span class="hidden sm:block h-12 w-px bg-gold/20 self-center"></span>
+          <StatCounter value={1} label="Yard Accuracy" prefix="±" />
+          <span class="hidden sm:block h-12 w-px bg-gold/20 self-center"></span>
+          <div class="flex flex-col gap-1">
+            <span class="font-mono text-gold text-3xl md:text-5xl font-bold tabular-nums leading-none">FREE</span>
+            <span class="font-mono text-[10px] md:text-xs uppercase tracking-[0.22em] text-ink-muted">iOS &middot; Android</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative opacity-0 animate-fade-in" style="animation-delay: 500ms;">
+        <div class="relative mx-auto max-w-[320px] lg:max-w-[380px]">
+          <div
+            class="absolute -inset-8 rounded-[3rem] bg-gold/10 blur-3xl"
+            aria-hidden="true"
+          ></div>
+          <div class="relative rounded-[2.5rem] bg-dusk-700 p-3 ring-1 ring-gold/30 shadow-gold-glow animate-float">
+            <Image
+              src={rangefinder}
+              alt="Golf GPS rangefinder showing 156 yards to pin on an aerial course view"
+              widths={[320, 480, 720, 960]}
+              sizes="(min-width: 1024px) 380px, (min-width: 768px) 320px, 280px"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              format="webp"
+              quality={85}
+              class="w-full h-auto rounded-[2rem] block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

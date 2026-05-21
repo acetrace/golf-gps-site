@@ -1,0 +1,133 @@
+---
+const NAV_LINKS = [
+  { href: '/#scorecard', label: 'Features' },
+  { href: '/#testimonials', label: 'Reviews' },
+  { href: '/privacy-policy/', label: 'Privacy' },
+  { href: '/terms-of-service/', label: 'Terms' },
+] as const;
+
+const focusLink =
+  'focus-visible:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/40 focus-visible:ring-offset-4 focus-visible:ring-offset-dusk rounded-sm';
+---
+<header
+  id="site-nav"
+  data-scrolled="false"
+  class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent transition-all duration-300 data-[scrolled=true]:py-3 data-[scrolled=true]:bg-dusk/85 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:border-b data-[scrolled=true]:border-gold/10"
+>
+  <div class="container max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
+    <a href="/" class={`flex flex-col leading-none ${focusLink}`}>
+      <span class="font-display text-2xl uppercase tracking-tight text-ink">Golf GPS</span>
+      <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mt-0.5">Rangefinder</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class={`font-mono text-xs uppercase tracking-[0.18em] text-ink/80 hover:text-gold transition-colors ${focusLink}`}
+        >{link.label}</a>
+      ))}
+      <a
+        href="#"
+        class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold px-5 py-2.5 text-xs font-mono font-bold uppercase tracking-widest text-dusk transition-all duration-300 hover:bg-gold-strong hover:shadow-gold-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dusk"
+      >
+        <span>Download</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </nav>
+
+    <button
+      id="nav-menu-toggle"
+      type="button"
+      class="md:hidden text-ink p-2 rounded-full hover:bg-dusk-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile-menu"
+    >
+      <svg id="nav-menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="4" x2="20" y1="6" y2="6" />
+        <line x1="4" x2="20" y1="12" y2="12" />
+        <line x1="4" x2="20" y1="18" y2="18" />
+      </svg>
+      <svg id="nav-menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="nav-mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 right-0 bg-dusk/95 backdrop-blur-md border-t border-gold/10 shadow-xl animate-fade-in-down"
+  >
+    <nav class="flex flex-col py-4">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          data-mobile-link
+          class={`px-6 py-3 font-mono text-sm uppercase tracking-[0.18em] text-ink/80 hover:text-gold hover:bg-dusk-800 transition-colors ${focusLink}`}
+        >{link.label}</a>
+      ))}
+      <div class="px-6 pt-4 pb-6">
+        <a
+          href="#"
+          class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-xs font-mono font-bold uppercase tracking-widest text-dusk hover:bg-gold-strong transition-colors"
+        >
+          <span>Download</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    if (window.__navInit) return;
+    window.__navInit = true;
+
+    const nav = document.getElementById('site-nav');
+    const toggle = document.getElementById('nav-menu-toggle');
+    const menu = document.getElementById('nav-mobile-menu');
+    const iconOpen = document.getElementById('nav-menu-icon-open');
+    const iconClose = document.getElementById('nav-menu-icon-close');
+    if (!nav || !toggle || !menu || !iconOpen || !iconClose) return;
+
+    let ticking = false;
+    function syncScroll() {
+      nav.dataset.scrolled = window.scrollY > 20 ? 'true' : 'false';
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(syncScroll);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    syncScroll();
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('hidden', !open);
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    }
+
+    toggle.addEventListener('click', () => {
+      const next = toggle.getAttribute('aria-expanded') !== 'true';
+      setOpen(next);
+    });
+
+    menu.querySelectorAll('[data-mobile-link]').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  })();
+</script>

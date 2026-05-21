@@ -1,0 +1,102 @@
+---
+interface Props {
+  value: number;
+  label: string;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  format?: 'comma' | 'plain';
+}
+
+const { value, label, suffix = '', prefix = '', decimals = 0, format = 'plain' } = Astro.props;
+
+if (!Number.isFinite(value)) {
+  throw new Error(`StatCounter received non-finite value "${value}" for label "${label}"`);
+}
+
+function formatInitial(): string {
+  return decimals > 0 ? '0' + '.' + '0'.repeat(decimals) : '0';
+}
+---
+<div class="flex flex-col gap-1">
+  <div class="flex items-baseline gap-1">
+    {prefix && <span class="font-mono text-gold text-2xl md:text-3xl font-bold">{prefix}</span>}
+    <span
+      data-counter
+      data-target={value}
+      data-decimals={decimals}
+      data-format={format}
+      class="font-mono text-gold text-3xl md:text-5xl font-bold tabular-nums leading-none"
+    >{formatInitial()}</span>
+    {suffix && <span class="font-mono text-gold text-2xl md:text-3xl font-bold">{suffix}</span>}
+  </div>
+  <span class="font-mono text-[10px] md:text-xs uppercase tracking-[0.22em] text-ink-muted">
+    {label}
+  </span>
+</div>
+
+<script is:inline>
+  (() => {
+    if (window.__statCounterInit) return;
+    window.__statCounterInit = true;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function formatValue(n, decimals, format) {
+      const rounded = decimals > 0 ? n.toFixed(decimals) : Math.round(n).toString();
+      if (format === 'comma') {
+        const [int, dec] = rounded.split('.');
+        const withCommas = int.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return dec ? withCommas + '.' + dec : withCommas;
+      }
+      return rounded;
+    }
+
+    function animate(el) {
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const format = el.dataset.format || 'plain';
+      if (!Number.isFinite(target)) return;
+      if (prefersReduced) {
+        el.textContent = formatValue(target, decimals, format);
+        return;
+      }
+      const duration = 1200;
+      const start = performance.now();
+      function frame(now) {
+        const elapsed = now - start;
+        const progress = Math.min(1, elapsed / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        el.textContent = formatValue(current, decimals, format);
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    function attach() {
+      document.querySelectorAll('[data-counter]:not([data-counter-bound])').forEach((el) => {
+        el.setAttribute('data-counter-bound', '1');
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attach);
+    } else {
+      attach();
+    }
+  })();
+</script>

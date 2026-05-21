@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const lastUpdated = new Date().toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<Layout title="Privacy Policy · Golf GPS" description="How Golf GPS collects, uses, and protects your personal data.">
+  <NavBar />
+  <main class="pt-36 pb-24 relative">
+    <div class="container max-w-3xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-10 bg-gold/60"></span>
+        <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">Legal · §</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.95] text-ink mb-4">
+        Privacy<br/><span class="text-gold">Policy</span>
+      </h1>
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-ink-muted mb-12">
+        Last updated · {lastUpdated}
+      </p>
+
+      <div class="prose prose-invert max-w-none
+        prose-headings:font-display prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-ink
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-p:font-sans prose-p:text-ink-muted prose-p:leading-relaxed
+        prose-strong:text-ink prose-strong:font-semibold
+        prose-a:text-gold prose-a:no-underline hover:prose-a:underline
+        prose-li:font-sans prose-li:text-ink-muted prose-li:marker:text-gold">
+        <p class="text-lg">
+          Welcome to Golf GPS. We respect your privacy and are committed to protecting your personal data.
+          This policy will tell you how we look after your data when you use our app and website, and your rights under the law.
+        </p>
+
+        <h2>1. Introduction</h2>
+        <p>
+          We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you use our app and website, and tell you about your privacy rights and how the law protects you.
+        </p>
+
+        <h2>2. The Data We Collect</h2>
+        <p>
+          We may collect, use, store and transfer different kinds of personal data about you, grouped as follows:
+        </p>
+        <ul>
+          <li><strong>Identity Data</strong> — first name, last name, username, or similar identifier.</li>
+          <li><strong>Contact Data</strong> — email address and telephone numbers.</li>
+          <li><strong>Technical Data</strong> — IP address, login data, browser type and version, time zone, device information.</li>
+          <li><strong>Profile Data</strong> — username, password, preferences, feedback.</li>
+          <li><strong>Usage Data</strong> — information about how you use our app and website.</li>
+          <li><strong>Location Data</strong> — current location when using GPS features of our app.</li>
+        </ul>
+
+        <h2>3. How We Use Your Data</h2>
+        <p>
+          We will only use your personal data when the law allows us to. Most commonly:
+        </p>
+        <ul>
+          <li>To provide and maintain our service.</li>
+          <li>To notify you about changes to our service.</li>
+          <li>To allow you to participate in interactive features.</li>
+          <li>To provide customer support.</li>
+          <li>To gather analysis or valuable information so that we can improve our service.</li>
+          <li>To monitor the usage of our service.</li>
+          <li>To detect, prevent and address technical issues.</li>
+        </ul>
+
+        <h2>4. Data Security</h2>
+        <p>
+          We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. Access is limited to those employees, agents, contractors and other third parties who have a business need to know.
+        </p>
+
+        <h2>5. Data Retention</h2>
+        <p>
+          We retain your personal data only for as long as necessary to fulfil the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements.
+        </p>
+
+        <h2>6. Your Legal Rights</h2>
+        <p>
+          Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:
+        </p>
+        <ul>
+          <li>Request access to your personal data.</li>
+          <li>Request correction of your personal data.</li>
+          <li>Request erasure of your personal data.</li>
+          <li>Object to processing of your personal data.</li>
+          <li>Request restriction of processing your personal data.</li>
+          <li>Request transfer of your personal data.</li>
+          <li>Withdraw consent.</li>
+        </ul>
+
+        <h2>7. Contact Us</h2>
+        <p>
+          If you have any questions about this privacy policy or our privacy practices, please contact us:
+        </p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:privacy@golfgps.ai">privacy@golfgps.ai</a>
+        </p>
+      </div>
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>

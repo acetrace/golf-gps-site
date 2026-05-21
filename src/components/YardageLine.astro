@@ -1,0 +1,62 @@
+---
+---
+<div
+  aria-hidden="true"
+  class="pointer-events-none fixed top-0 bottom-0 left-1/2 -translate-x-1/2 z-[5] hidden lg:block"
+  style="width: 2px;"
+>
+  <svg
+    class="h-full w-full overflow-visible"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    viewBox="0 0 2 1000"
+  >
+    <line
+      id="yardage-line"
+      x1="1"
+      y1="0"
+      x2="1"
+      y2="1000"
+      stroke="#E8A838"
+      stroke-width="2"
+      stroke-dasharray="3 6"
+      stroke-linecap="round"
+      style="stroke-dashoffset: 1000; transition: stroke-dashoffset 80ms linear;"
+      opacity="0.55"
+    />
+  </svg>
+</div>
+
+<script is:inline>
+  (() => {
+    if (window.__yardageLineInit) return;
+    window.__yardageLineInit = true;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const line = document.getElementById('yardage-line');
+    if (!line) return;
+
+    const totalLength = 1000;
+    let ticking = false;
+
+    function update() {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
+      line.style.strokeDashoffset = String(totalLength * (1 - progress));
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  })();
+</script>

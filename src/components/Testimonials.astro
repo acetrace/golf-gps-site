@@ -1,0 +1,58 @@
+---
+import testimonials from '../data/testimonials.yaml';
+
+function stars(rating: number): boolean[] {
+  return Array.from({ length: 5 }, (_, i) => i < rating);
+}
+---
+<section id="testimonials" class="relative py-28 lg:py-40 overflow-hidden">
+  <div class="container max-w-7xl mx-auto px-6">
+    <div class="max-w-2xl mb-16 lg:mb-20">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-10 bg-gold/60"></span>
+        <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">
+          Voices from the fairway
+        </span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.95] text-ink text-balance">
+        What golfers<br/><span class="text-gold">are saying</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {testimonials.map((t) => (
+        <article class="group relative bg-dusk-800/60 backdrop-blur-sm rounded-3xl p-7 ring-1 ring-gold/10 hover:ring-gold/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold/30 bg-dusk-700 shrink-0">
+              <img
+                src={`/images/testimonials/${t.id}.jpg`}
+                alt={t.name}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-display text-lg uppercase tracking-tight text-ink truncate">{t.name}</h3>
+              <div class="flex gap-0.5 mt-1" aria-label={`${t.rating} out of 5 stars`}>
+                {stars(t.rating).map((on) => (
+                  <svg
+                    class={`w-3.5 h-3.5 ${on ? 'text-gold' : 'text-dusk-50'}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p class="font-sans text-sm leading-relaxed text-ink-muted italic">
+            &ldquo;{t.text}&rdquo;
+          </p>
+          <div class="absolute top-6 right-7 font-display text-6xl leading-none text-gold/15 select-none pointer-events-none">"</div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
