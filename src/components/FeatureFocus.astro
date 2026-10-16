@@ -1,0 +1,13 @@
+---
+import type { FocusRect } from '../types/feature';
+import { focusStyle } from '../utils/focusStyle';
+
+interface Props {
+  initial: FocusRect;
+}
+
+const { initial } = Astro.props;
+---
+<div class="pointer-events-none absolute inset-0 overflow-hidden rounded-card" aria-hidden="true">
+  <span class="ss-focus" data-focus style={focusStyle(initial)}></span>
+</div>

@@ -1,122 +1,345 @@
-@import '@fontsource-variable/big-shoulders-display';
-@import '@fontsource-variable/manrope';
-@import '@fontsource-variable/jetbrains-mono';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 22% 14%;
-    --foreground: 49 53% 91%;
+    --void: #07090c;
+    --graphite: #10141a;
+    --raised: #171c24;
+    --line: #232a34;
+    --volt: #39e5ff;
+    --on-volt: #04121a;
+    --flare: #ff3ea5;
+    --gold: #ffc46b;
+    --silver: #c9d3de;
+    --ice: #eaf6ff;
+    --mist: #8c9aab;
+    --glass: rgba(10, 14, 20, 0.55);
+    --glass-line: rgba(255, 255, 255, 0.14);
+    --veil: rgba(255, 255, 255, 0.1);
+    --track: rgba(255, 255, 255, 0.15);
+    --media-text: rgba(255, 255, 255, 0.75);
+    --scrim: rgba(7, 9, 12, 0.6);
+    --scrim-strong: rgba(7, 9, 12, 0.85);
+    --turf: #0f2a22;
+    --lane: #1b4a3a;
 
-    --card: 240 27% 20%;
-    --card-foreground: 49 53% 91%;
+    --font-display: 'Unbounded', 'Geist', system-ui, sans-serif;
+    --font-sans: 'Geist', -apple-system, system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 
-    --popover: 240 27% 20%;
-    --popover-foreground: 49 53% 91%;
+    --radius-bar: 3px;
+    --radius-tag: 8px;
+    --radius-badge: 11px;
+    --radius-thumb: 14px;
+    --radius-tile: 18px;
+    --radius-group: 20px;
+    --radius-card: 22px;
+    --radius-panel: 26px;
+    --radius-sheet: 28px;
+    --radius-pill: 999px;
 
-    --primary: 40 79% 56%;
-    --primary-foreground: 240 22% 14%;
+    --shadow-cta: 0 10px 30px rgba(57, 229, 255, 0.25);
+    --shadow-media: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --shadow-focus: 0 0 0 2px var(--void), 0 0 0 4px var(--volt);
 
-    --secondary: 240 19% 24%;
-    --secondary-foreground: 49 53% 91%;
-
-    --muted: 240 19% 24%;
-    --muted-foreground: 290 8% 57%;
-
-    --accent: 40 79% 56%;
-    --accent-foreground: 240 22% 14%;
-
-    --destructive: 12 67% 63%;
-    --destructive-foreground: 49 53% 91%;
-
-    --border: 240 11% 25%;
-    --input: 240 11% 25%;
-    --ring: 40 79% 56%;
-
-    --radius: 1rem;
+    --blur-glass: 22px;
 
     color-scheme: dark;
   }
 
-  * {
-    @apply border-border;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
-    @apply bg-dusk text-ink font-sans antialiased min-h-screen;
-    font-feature-settings: 'tnum';
+    @apply bg-void text-ice font-sans antialiased min-h-screen;
   }
 
-  h1,
-  h2,
-  h3 {
-    @apply font-display tracking-tight;
+  ::selection {
+    background: var(--volt);
+    color: var(--on-volt);
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
   }
 }
 
 @layer components {
-  .text-balance {
+  .ss-ground {
+    background-color: var(--void);
+    background-image: radial-gradient(
+      120% 45% at 80% 0%,
+      color-mix(in srgb, var(--volt) 14%, transparent) 0%,
+      transparent 70%
+    );
+  }
+
+  .ss-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+    margin: 0;
     text-wrap: balance;
   }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .ss-display em {
+    font-style: normal;
+    color: var(--volt);
   }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+  .ss-display--glow em {
+    background: linear-gradient(90deg, var(--flare), var(--volt));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gold/30 rounded-full hover:bg-gold/60 transition-colors;
+  .ss-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--volt);
+  }
+
+  .ss-eyebrow--muted {
+    color: var(--mist);
+  }
+
+  .ss-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ss-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ss-btn {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: filter 150ms ease, background-color 150ms ease;
+  }
+
+  .ss-btn--primary {
+    height: 56px;
+    padding: 0 28px;
+    background: var(--volt);
+    color: var(--on-volt);
+    font-size: 17px;
+    box-shadow: var(--shadow-cta);
+  }
+
+  .ss-btn--primary:hover {
+    filter: brightness(1.08);
+  }
+
+  .ss-btn--secondary {
+    height: 56px;
+    padding: 0 24px;
+    background: var(--raised);
+    color: var(--ice);
+    font-size: 16px;
+  }
+
+  .ss-btn--secondary:hover {
+    background: var(--line);
+  }
+
+  .ss-btn--compact {
+    height: 44px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+
+  .ss-glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-line);
+    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+    backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+  }
+
+  .ss-glass-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--glass);
+    border: 1px solid var(--glass-line);
+    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+    backdrop-filter: blur(var(--blur-glass)) saturate(1.4);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .ss-badge {
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--on-volt);
+  }
+
+  .ss-readout {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--volt);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ss-card {
+    border-radius: var(--radius-group);
+    background: var(--graphite);
+    border: 1px solid var(--line);
+  }
+
+  .ss-media {
+    border-radius: var(--radius-card);
+    background: var(--graphite);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-media);
+    overflow: hidden;
+  }
+
+  .ss-tracer {
+    fill: none;
+    stroke-width: 5;
+    stroke-linecap: round;
+  }
+
+  .ss-tracer--glow {
+    stroke-width: 20;
+    opacity: 0.5;
+    filter: blur(8px);
+  }
+
+  [data-detail-panel][hidden] {
+    display: none;
+  }
+
+  .ss-detail-chip {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: var(--radius-pill);
+    background: var(--raised);
+    color: var(--ice);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .ss-detail-chip .ss-tag {
+    color: var(--volt);
+  }
+
+  .ss-detail-chip:hover {
+    background: var(--line);
+  }
+
+  .ss-detail-chip[aria-pressed='true'] {
+    background: var(--ice);
+    color: var(--void);
+  }
+
+  .ss-detail-chip[aria-pressed='true'] .ss-tag {
+    color: var(--void);
+  }
+
+  .ss-focus {
+    position: absolute;
+    left: var(--fx);
+    top: var(--fy);
+    width: var(--fw);
+    height: var(--fh);
+    border: 1.5px solid var(--volt);
+    border-radius: var(--radius-thumb);
+    box-shadow: 0 0 0 100vmax var(--scrim), 0 0 28px color-mix(in srgb, var(--volt) 35%, transparent);
+  }
+
+  .ss-link {
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .ss-link:hover {
+    color: var(--ice);
   }
 }
 
-@layer utilities {
-  .text-shadow-gold {
-    text-shadow: 0 0 30px rgba(232, 168, 56, 0.4);
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 
-  .delay-100 {
-    animation-delay: 100ms;
+  .ss-tracer--draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ss-tracer-draw 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) 0.6s forwards;
   }
-  .delay-200 {
-    animation-delay: 200ms;
+
+  .ss-focus {
+    transition: left 450ms cubic-bezier(0.3, 0.7, 0.3, 1), top 450ms cubic-bezier(0.3, 0.7, 0.3, 1),
+      width 450ms cubic-bezier(0.3, 0.7, 0.3, 1), height 450ms cubic-bezier(0.3, 0.7, 0.3, 1);
   }
-  .delay-300 {
-    animation-delay: 300ms;
-  }
-  .delay-400 {
-    animation-delay: 400ms;
-  }
-  .delay-500 {
-    animation-delay: 500ms;
-  }
-  .delay-600 {
-    animation-delay: 600ms;
+
+  .ss-lock-in {
+    opacity: 0;
+    animation: ss-lock-in 0.4s ease-out 2s forwards;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+@keyframes ss-tracer-draw {
+  to {
+    stroke-dashoffset: 0;
   }
+}
 
-  .animate-float,
-  .animate-pulse-subtle {
-    animation: none !important;
+@keyframes ss-lock-in {
+  to {
+    opacity: 1;
   }
 }

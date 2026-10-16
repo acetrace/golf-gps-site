@@ -1,0 +1,21 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { EXTRAS } from '../data/extras';
+---
+<section id="more" class="relative scroll-mt-20 py-20 lg:py-28">
+  <div class="container">
+    <div class="mb-12 flex max-w-2xl flex-col gap-5">
+      <span class="ss-eyebrow">Also in the app</span>
+      <SectionHeading level="h2" size="section" glow={false} title="Built for the" accent="whole round." />
+    </div>
+    <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+      {EXTRAS.map((extra) => (
+        <article class="ss-card flex flex-col gap-2.5 p-4.5">
+          <span class="ss-tag text-volt">{extra.tag}</span>
+          <h3 class="text-title-3 text-ice">{extra.title}</h3>
+          <p class="text-body text-mist">{extra.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

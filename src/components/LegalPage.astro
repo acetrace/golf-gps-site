@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from './NavBar.astro';
+import SiteFooter from './SiteFooter.astro';
+import SectionHeading from './SectionHeading.astro';
+
+interface Props {
+  pageTitle: string;
+  description: string;
+  title: string;
+  accent: string;
+  lastUpdated: string;
+}
+
+const { pageTitle, description, title, accent, lastUpdated } = Astro.props;
+---
+<Layout title={pageTitle} description={description}>
+  <NavBar />
+  <main class="ss-ground pb-24 pt-36">
+    <div class="container max-w-3xl">
+      <div class="mb-12 flex flex-col gap-5">
+        <span class="ss-eyebrow">Legal</span>
+        <SectionHeading level="h1" size="page" glow={false} title={title} accent={accent} />
+        <p class="ss-tag text-mist">Last updated · {lastUpdated}</p>
+      </div>
+
+      <div class="prose prose-invert max-w-none
+        prose-headings:font-display prose-headings:font-extrabold prose-headings:uppercase prose-headings:tracking-[0.01em] prose-headings:text-ice
+        prose-h2:text-sheet-title prose-h2:mt-12 prose-h2:mb-4
+        prose-p:text-body prose-p:text-mist
+        prose-strong:text-ice prose-strong:font-semibold
+        prose-a:text-volt prose-a:no-underline hover:prose-a:underline
+        prose-li:text-body prose-li:text-mist prose-li:marker:text-volt">
+        <slot />
+      </div>
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>

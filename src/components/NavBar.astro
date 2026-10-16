@@ -1,58 +1,35 @@
 ---
-const NAV_LINKS = [
-  { href: '/#scorecard', label: 'Features' },
-  { href: '/#testimonials', label: 'Reviews' },
-  { href: '/privacy-policy/', label: 'Privacy' },
-  { href: '/terms-of-service/', label: 'Terms' },
-] as const;
-
-const focusLink =
-  'focus-visible:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/40 focus-visible:ring-offset-4 focus-visible:ring-offset-dusk rounded-sm';
+import { APP_STORE_URL, NAV_LINKS } from '../data/navigation';
 ---
 <header
   id="site-nav"
   data-scrolled="false"
-  class="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent transition-all duration-300 data-[scrolled=true]:py-3 data-[scrolled=true]:bg-dusk/85 data-[scrolled=true]:backdrop-blur-md data-[scrolled=true]:border-b data-[scrolled=true]:border-gold/10"
+  class="fixed left-0 right-0 top-0 z-50 border-b border-transparent py-5 transition-[padding,background-color,border-color] duration-300 data-[scrolled=true]:border-line data-[scrolled=true]:py-3 data-[scrolled=true]:ss-glass"
 >
-  <div class="container max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
-    <a href="/" class={`flex flex-col leading-none ${focusLink}`}>
-      <span class="font-display text-2xl uppercase tracking-tight text-ink">Golf GPS</span>
-      <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mt-0.5">Rangefinder</span>
-    </a>
+  <div class="container flex items-center justify-between gap-8">
+    <a href="/" class="ss-wordmark rounded-sm text-[22px] text-ice">Golf GPS</a>
 
-    <nav class="hidden md:flex items-center gap-8">
+    <nav class="hidden items-center gap-7 md:flex">
       {NAV_LINKS.map((link) => (
-        <a
-          href={link.href}
-          class={`font-mono text-xs uppercase tracking-[0.18em] text-ink/80 hover:text-gold transition-colors ${focusLink}`}
-        >{link.label}</a>
+        <a href={link.href} class="ss-link rounded-sm text-chip font-medium">{link.label}</a>
       ))}
-      <a
-        href="#"
-        class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold px-5 py-2.5 text-xs font-mono font-bold uppercase tracking-widest text-dusk transition-all duration-300 hover:bg-gold-strong hover:shadow-gold-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dusk"
-      >
-        <span>Download</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </a>
+      <a href={APP_STORE_URL} class="ss-btn ss-btn--secondary ss-btn--compact">Download</a>
     </nav>
 
     <button
       id="nav-menu-toggle"
       type="button"
-      class="md:hidden text-ink p-2 rounded-full hover:bg-dusk-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50"
-      aria-label="Open menu"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-raised text-ice md:hidden"
+      aria-label="Menu"
       aria-expanded="false"
       aria-controls="nav-mobile-menu"
     >
-      <svg id="nav-menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="4" x2="20" y1="6" y2="6" />
+      <svg id="nav-menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="4" x2="20" y1="7" y2="7" />
         <line x1="4" x2="20" y1="12" y2="12" />
-        <line x1="4" x2="20" y1="18" y2="18" />
+        <line x1="4" x2="20" y1="17" y2="17" />
       </svg>
-      <svg id="nav-menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg id="nav-menu-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M18 6 6 18" />
         <path d="m6 6 12 12" />
       </svg>
@@ -61,73 +38,75 @@ const focusLink =
 
   <div
     id="nav-mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 right-0 bg-dusk/95 backdrop-blur-md border-t border-gold/10 shadow-xl animate-fade-in-down"
+    class="absolute left-0 right-0 top-full hidden rounded-b-sheet border-b border-line bg-graphite md:hidden"
   >
-    <nav class="flex flex-col py-4">
+    <nav class="flex flex-col px-5 py-3">
       {NAV_LINKS.map((link) => (
         <a
           href={link.href}
           data-mobile-link
-          class={`px-6 py-3 font-mono text-sm uppercase tracking-[0.18em] text-ink/80 hover:text-gold hover:bg-dusk-800 transition-colors ${focusLink}`}
+          class="flex min-h-[50px] items-center border-b border-line text-body text-ice last-of-type:border-b-0"
         >{link.label}</a>
       ))}
-      <div class="px-6 pt-4 pb-6">
-        <a
-          href="#"
-          class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-xs font-mono font-bold uppercase tracking-widest text-dusk hover:bg-gold-strong transition-colors"
-        >
-          <span>Download</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </a>
+      <div class="pb-4 pt-3">
+        <a href={APP_STORE_URL} class="ss-btn ss-btn--primary w-full">Download</a>
       </div>
     </nav>
   </div>
 </header>
 
-<script is:inline>
-  (() => {
-    if (window.__navInit) return;
-    window.__navInit = true;
+<script>
+  function requireById(id: string): HTMLElement {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`Navigation is missing #${id}`);
+    return element;
+  }
 
-    const nav = document.getElementById('site-nav');
-    const toggle = document.getElementById('nav-menu-toggle');
-    const menu = document.getElementById('nav-mobile-menu');
-    const iconOpen = document.getElementById('nav-menu-icon-open');
-    const iconClose = document.getElementById('nav-menu-icon-close');
-    if (!nav || !toggle || !menu || !iconOpen || !iconClose) return;
+  const nav = requireById('site-nav');
+  const toggle = requireById('nav-menu-toggle');
+  const menu = requireById('nav-mobile-menu');
+  const iconOpen = requireById('nav-menu-icon-open');
+  const iconClose = requireById('nav-menu-icon-close');
+  const desktop = window.matchMedia('(min-width: 768px)');
 
-    let ticking = false;
-    function syncScroll() {
-      nav.dataset.scrolled = window.scrollY > 20 ? 'true' : 'false';
-      ticking = false;
-    }
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(syncScroll);
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    syncScroll();
+  let ticking = false;
 
-    function setOpen(open) {
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      menu.classList.toggle('hidden', !open);
-      iconOpen.classList.toggle('hidden', open);
-      iconClose.classList.toggle('hidden', !open);
-    }
+  function syncScroll(): void {
+    nav.dataset.scrolled = window.scrollY > 20 ? 'true' : 'false';
+    ticking = false;
+  }
 
-    toggle.addEventListener('click', () => {
-      const next = toggle.getAttribute('aria-expanded') !== 'true';
-      setOpen(next);
-    });
+  function isOpen(): boolean {
+    return toggle.getAttribute('aria-expanded') === 'true';
+  }
 
-    menu.querySelectorAll('[data-mobile-link]').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
-    });
-  })();
+  function setOpen(open: boolean): void {
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menu.classList.toggle('hidden', !open);
+    iconOpen.classList.toggle('hidden', open);
+    iconClose.classList.toggle('hidden', !open);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(syncScroll);
+  }, { passive: true });
+  syncScroll();
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+  menu.querySelectorAll<HTMLElement>('[data-mobile-link]').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !isOpen()) return;
+    setOpen(false);
+    toggle.focus();
+  });
+
+  desktop.addEventListener('change', (event) => {
+    if (event.matches) setOpen(false);
+  });
 </script>

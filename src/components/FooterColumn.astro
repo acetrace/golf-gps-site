@@ -1,0 +1,18 @@
+---
+import type { NavLink } from '../types/navigation';
+
+interface Props {
+  heading: string;
+  links: readonly NavLink[];
+}
+
+const { heading, links } = Astro.props;
+---
+<div class="flex flex-col gap-4 md:col-span-3">
+  <h2 class="ss-tag text-mist">{heading}</h2>
+  <ul class="flex flex-col gap-3 text-subhead">
+    {links.map((link) => (
+      <li><a href={link.href} class="ss-link rounded-sm">{link.label}</a></li>
+    ))}
+  </ul>
+</div>
