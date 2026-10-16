@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import StoreBadges from './StoreBadges.astro';
+import StoreButtons from './StoreButtons.astro';
+import SectionHeading from './SectionHeading.astro';
 import landscape from '../assets/golf-course-landscape.png';
 ---
-<section class="relative py-32 lg:py-44 overflow-hidden">
+<section class="relative overflow-hidden py-28 lg:py-40">
   <div class="absolute inset-0 -z-10">
     <Image
       src={landscape}
@@ -13,33 +14,18 @@ import landscape from '../assets/golf-course-landscape.png';
       loading="lazy"
       format="webp"
       quality={70}
-      class="w-full h-full object-cover"
+      class="h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-dusk/85"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-dusk via-transparent to-dusk"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,var(--void)_0%,var(--scrim-strong)_35%,var(--scrim-strong)_65%,var(--void)_100%)]"></div>
   </div>
 
-  <div class="container max-w-5xl mx-auto px-6 text-center relative">
-    <div class="flex items-center justify-center gap-3 mb-6">
-      <span class="h-px w-10 bg-gold/60"></span>
-      <span class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold">Tee it up</span>
-      <span class="h-px w-10 bg-gold/60"></span>
-    </div>
-
-    <h2 class="font-display text-6xl md:text-7xl lg:text-[9rem] uppercase leading-[0.9] text-ink text-balance mb-8">
-      Ready to<br/><span class="text-gold text-shadow-gold">play smarter?</span>
-    </h2>
-
-    <p class="font-sans text-lg md:text-xl text-ink-muted max-w-xl mx-auto leading-relaxed mb-12">
-      Free on iOS and Android. Join thousands of golfers already lowering their handicap with precision GPS.
+  <div class="container relative flex max-w-4xl flex-col items-center gap-7 text-center">
+    <span class="ss-eyebrow">Free to play · Pro to improve</span>
+    <SectionHeading level="h2" size="cta" glow={true} title="Know the number." accent="Hit the shot." />
+    <p class="max-w-xl text-body-lg text-mist">
+      Live yardage, a scorecard that keeps up, and a handicap that shows your progress. Get it before your next tee time.
     </p>
-
-    <div class="mb-8">
-      <StoreBadges size="lg" align="center" />
-    </div>
-
-    <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-ink-dim">
-      No subscription · No ads · No data sold
-    </p>
+    <StoreButtons align="center" />
+    <p class="text-caption text-mist">No ads · No sign-up · Free to start</p>
   </div>
 </section>

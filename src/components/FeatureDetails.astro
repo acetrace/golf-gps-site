@@ -1,0 +1,44 @@
+---
+import type { FeatureDetail } from '../types/feature';
+import StatReadout from './StatReadout.astro';
+import { focusStyle } from '../utils/focusStyle';
+
+interface Props {
+  featureId: string;
+  featureLabel: string;
+  details: readonly FeatureDetail[];
+}
+
+const { featureId, featureLabel, details } = Astro.props;
+---
+<div class="flex flex-col gap-3">
+  <div class="flex flex-wrap gap-2" role="group" aria-label={`${featureLabel} details`}>
+    {details.map((detail, i) => (
+      <button
+        type="button"
+        class="ss-detail-chip"
+        data-detail-trigger={detail.id}
+        data-focus-style={focusStyle(detail.focus)}
+        aria-controls={`${featureId}-panel`}
+        aria-pressed={i === 0 ? 'true' : 'false'}
+      >
+        <span class="ss-tag" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        {detail.label}
+      </button>
+    ))}
+  </div>
+
+  <div id={`${featureId}-panel`} class="ss-card p-4.5" aria-live="polite">
+    {details.map((detail, i) => (
+      <div class="grid grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_auto]" data-detail-panel={detail.id} hidden={i !== 0}>
+        <div class="flex flex-col gap-1.5">
+          <h3 class="text-title-3 text-ice">{detail.label}</h3>
+          <p class="text-body text-mist">{detail.body}</p>
+        </div>
+        <div class="sm:min-w-[150px]">
+          <StatReadout {...detail.readout} />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

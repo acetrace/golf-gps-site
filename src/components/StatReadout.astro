@@ -1,0 +1,16 @@
+---
+import type { Stat, StatTone } from '../types/stat';
+
+interface Props extends Stat {}
+
+const { value, label, tone } = Astro.props;
+
+const TONE_CLASSES: Record<StatTone, string> = {
+  volt: 'text-volt',
+  gold: 'text-gold',
+};
+---
+<div class="ss-card flex flex-col gap-2 px-3.5 py-3.5 md:px-4.5 md:py-4">
+  <span class={`ss-readout whitespace-nowrap text-[20px] sm:text-[28px] md:text-[34px] leading-none tracking-[-0.02em] ${TONE_CLASSES[tone]}`}>{value}</span>
+  <span class="ss-tag text-mist">{label}</span>
+</div>

@@ -1,16 +1,15 @@
 ---
 import '../styles/global.css';
-import FilmGrain from '../components/FilmGrain.astro';
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
 }
 
-const {
-  title = 'Golf GPS · Rangefinder, Scorecards, Shot Tracking',
-  description = 'Precision distance to any pin, live scorecards, shot-by-shot tracking and 30,000+ courses.',
-} = Astro.props;
+const { title, description } = Astro.props;
+
+if (!Astro.site) throw new Error('astro.config site is required for absolute Open Graph URLs');
+const ogImage = new URL('/og-image.png', Astro.site).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -20,19 +19,24 @@ const {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
     <link rel="apple-touch-icon" href="/favicon-512.png" />
-    <meta name="theme-color" content="#1A1A2E" />
+    <meta name="theme-color" content="#07090C" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
-    <FilmGrain />
     <slot />
   </body>
 </html>

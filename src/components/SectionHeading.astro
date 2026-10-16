@@ -1,0 +1,24 @@
+---
+import type { HeadingLevel, HeadingSize } from '../types/heading';
+
+interface Props {
+  level: HeadingLevel;
+  size: HeadingSize;
+  glow: boolean;
+  title: string;
+  accent: string;
+}
+
+const { level: Tag, size, glow, title, accent } = Astro.props;
+
+const SIZE_CLASSES: Record<HeadingSize, string> = {
+  section: 'text-[36px] md:text-[52px] lg:text-[64px]',
+  page: 'text-[40px] md:text-[56px] lg:text-[64px]',
+  hero: 'text-[34px] sm:text-display lg:text-[64px] xl:text-[84px]',
+  cta: 'text-[44px] md:text-[72px] lg:text-[96px]',
+  error: 'text-[48px] md:text-[80px] lg:text-[104px]',
+};
+---
+<Tag class:list={['ss-display leading-[0.95]', SIZE_CLASSES[size], { 'ss-display--glow': glow }]}>
+  {title}<br /><em>{accent}</em>
+</Tag>
