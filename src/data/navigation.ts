@@ -11,7 +11,6 @@ export const LEGAL_LINKS: readonly NavLink[] = [
 export const NAV_LINKS: readonly NavLink[] = [
   { href: `/#${FEATURES[0].id}`, label: 'Features' },
   { href: '/#pro', label: 'Pro' },
-  { href: '/#testimonials', label: 'Reviews' },
   { href: '/privacy-policy/', label: 'Privacy' },
   { href: '/terms-of-service/', label: 'Terms' },
 ];
