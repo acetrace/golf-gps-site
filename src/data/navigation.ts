@@ -1,8 +1,6 @@
 import type { NavLink } from '../types/navigation';
 import { FEATURES } from './features';
 
-export const APP_STORE_URL: string = 'https://apps.apple.com/app/id6762449303';
-
 export const LEGAL_LINKS: readonly NavLink[] = [
   { href: '/privacy-policy/', label: 'Privacy policy' },
   { href: '/terms-of-service/', label: 'Terms of service' },
